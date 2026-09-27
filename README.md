@@ -68,28 +68,20 @@ Showcases popular Tamil artists and featured music collections.
 
 ## 📸 Website Screenshots
 
-### 🏠 Home Page
-
+### Home
 ![Home](images/home.png)
 
-### 🔍 Explore Page
-
+### Explore
 ![Explore](images/explore.png)
 
-### 🎶 Playlists Page
+### Playlist
+![Playlist](images/playlist.png)
 
-![Playlists](images/playlist.png)
-
-### ❤️ Favorites Page
-
+### Favorites
 ![Favorites](images/favorites.png)
 
-### 👨‍🎤 Artists Page
-
-![Artists](images/artist.png)
-
----
-
+### Artists
+![Artists](images/artists.png)
 ## 📁 Project Structure
 
 ```text
