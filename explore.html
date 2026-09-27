@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0F0F1A;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
+}
+    body{
+    background:#0F0F1A;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+}
+html, body{
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body{
+    min-height: 100vh;
+    padding-bottom: 200px;   
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#0F0F1A;
+    color:white;
+}
+
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:240px;
+    height:100vh;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    border-right:1px solid rgba(255,255,255,0.1);
+    padding:30px 20px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#A855F7;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:30px;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:14px 18px;
+    margin-bottom:10px;
+    border-radius:12px;
+    transition:0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+    background:#A855F7;
+}
+
+
+
+.main{
+    margin-left:240px;
+    padding:40px;
+}
+
+.release-section{
+    padding-bottom: 120px;   
+}
+.search-section{
+    padding:80px 8% 40px;
+}
+
+.search-section h1{
+    font-size:48px;
+    margin-bottom:25px;
+}
+.search-section p{
+    font-size: 18px;
+    color: #B3B3B3;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:50px;
+    padding:15px 20px;
+    gap:10px;
+    transition:0.3s ease;
+}
+.search-box:hover{
+    background:rgba(255,255,255,0.12);
+    border:1px solid #A855F7;
+    box-shadow:0 0 18px rgba(168,85,247,0.35);
+    transform:translateY(-2px);
+}
+
+
+.search-box:focus-within{
+    background:rgba(255,255,255,0.15);
+    border:1px solid #A855F7;
+    box-shadow:0 0 22px rgba(168,85,247,0.45);
+}
+
+.search-icon{
+    font-size: 20px;
+}
+.search-box{
+    width:100%;
+}
+.sidebar{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
+    border-right:1px solid rgba(255,255,255,.12);
+}
+.sidebar a.active{
+    background:rgba(168,85,247,.25);
+    color:#C084FC;
+}
+
+.search-box input{
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+}
+.search-box:before{
+    content:"\1F50D";
+}
+.search-box input::placeholder{
+    color:#B3B3B3;
+}
+.mood-card-1:before{
+    content:"\1F3A7";
+}
+.mood-card-2:before{
+    content:"\1F60A";
+}
+.mood-card-3:before{
+    content:"\1F494";
+}
+.mood-card-4:before{
+    content:"\1F4AA";
+}
+.mood-card-5:before{
+    content:"\01F319";
+}
+.mood-card-6:before{
+    content:"\1F389";
+}
+.mood-section{
+    padding: 20px 8% 50px;
+}
+
+.mood-section h2{
+    color: white;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.mood-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+}
+
+.mood-card{
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    padding: 25px 15px;
+    text-align: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.mood-card i{
+    font-size: 34px;
+    color: #A855F7;
+    margin-bottom: 12px;
+}
+
+.mood-card h3{
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.mood-card:hover{
+    background: #A855F7;
+    transform: translateY(-5px);
+}
+
+.mood-card:hover i,
+.mood-card:hover h3{
+    color: white;
+}
+
+@media(max-width:768px){
+    .mood-container{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+.genre-card::before{
+    display:block;
+    font-size:40px;
+    margin-bottom:12px;
+}
+
+.genre-1::before{ content:"\1F3B5"; }  
+.genre-2::before{ content:"\1F3B8"; } 
+.genre-3::before{ content:"\1F3BC"; }  
+.genre-4::before{ content:"\1F3A4"; }  
+.genre-5::before{ content:"\1F3B7"; } 
+.genre-6::before{ content:"\26A1"; }   
+.genres-section{
+    padding: 20px 8% 60px;
+}
+
+.genres-section h2{
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.genres-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+}
+
+.genre-card{
+    height: 130px;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.genre-card:hover{
+    transform: scale(1.05);
+}
+
+.pop{ background:#EC4899; }
+.rock{ background:#2563EB; }
+.melody{ background:#8B5CF6; }
+.hiphop{ background:#F97316; }
+.jazz{ background:#14B8A6; }
+.edm{ background:#22C55E; }
+.genre-card:hover{
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+@media(max-width:768px){
+    .genres-container{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (max-width:768px){
+    .mood-section h2{
+        text-align:center;
+    }
+}
+
+
+.playlist-section{
+    padding:20px 8% 60px;
+}
+
+.playlist-section h2{
+    color:white;
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+.playlist-container{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.playlist-card{
+    height:170px;
+    border-radius:18px;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.playlist-card::before{
+    display:block;
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.playlist-card h3{
+    font-size:22px;
+    margin-bottom:8px;
+    color:white;
+}
+
+.playlist-card p{
+    color:#F3F4F6;
+    font-size:16px;
+}
+
+.playlist-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 12px 25px rgba(0,0,0,0.35);
+}
+
+/* Emoji Symbol Codes */
+
+.playlist-1{
+    background:#7C3AED;
+}
+.playlist-1::before{
+    content:"\1F3B6";
+} 
+
+.playlist-2{
+    background:#DB2777;
+}
+.playlist-2::before{
+    content:"\1F496";
+} 
+
+.playlist-3{
+    background:#2563EB;
+}
+.playlist-3::before{
+    content:"\1F319";
+} 
+
+.playlist-4{
+    background:#059669;
+}
+.playlist-4::before{
+    content:"\1F4AA";
+} 
+
+@media(max-width:768px){
+    .playlist-container{
+        grid-template-columns:1fr;
+    }
+}
+.artist-section{
+    padding:20px 8% 60px;
+}
+
+.artist-section h2{
+    color:white;
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+.artist-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.artist-card{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:18px;
+    padding:25px 15px;
+    text-align:center;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.artist-card::before{
+    display:block;
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+/* Symbol Codes */
+
+.artist-1::before{ content:"\1F3A4"; } 
+.artist-2::before{ content:"\1F3B9"; } 
+.artist-3::before{ content:"\1F399"; } 
+.artist-4::before{ content:"\1F3A7"; } 
+
+.artist-card h3{
+    color:white;
+    margin-bottom:8px;
+}
+
+.artist-card p{
+    color:#B3B3B3;
+}
+
+.artist-card:hover{
+    background:#A855F7;
+    transform:translateY(-6px);
+}
+
+.artist-card:hover p{
+    color:white;
+}
+
+@media(max-width:768px){
+    .artist-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+.release-section{
+    padding:20px 8% 60px;
+}
+
+.release-section h2{
+    color:white;
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+.release-container{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.release-card{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:18px;
+    padding:25px 20px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.release-card::before{
+    display:block;
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.release-1::before{ content:"\1F3B5"; } 
+.release-2::before{ content:"\1F3B6"; } 
+.release-3::before{ content:"\1F3BC"; } 
+.release-4::before{ content:"\26A1"; }  
+
+.release-card h3{
+    color:white;
+    margin-bottom:8px;
+}
+
+.release-card p{
+    color:#B3B3B3;
+}
+
+.release-card:hover{
+    background:#A855F7;
+    transform:translateY(-6px);
+}
+
+.release-card:hover p{
+    color:white;
+}
+
+@media(max-width:768px){
+    .release-container{
+        grid-template-columns:1fr;
+    }
+}
+
+
+
+
+.mood-card.active,
+.genre-card.active{
+    background:#A855F7;
+    color:#fff;
+    box-shadow:0 0 20px rgba(168,85,247,.5);
+}
+.mood-card::before{
+    display:block;
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.mood-card:hover::before,
+.mood-card:hover h3{
+    color:white;
+}/* ===========================
+   RESPONSIVE - EXPLORE PAGE
+=========================== */
+
+@media (max-width:768px){
+
+  .sidebar{
+    width:100%;
+    height:70px;
+    position:fixed;
+    left:0;
+    bottom:0;
+    top:auto;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding:0 8px;
+    background:rgba(15,15,26,.95);
+    backdrop-filter:blur(18px);
+    border-top:1px solid rgba(255,255,255,.1);
+    z-index:1000;
+  }
+
+  .logo{
+    display:none;
+  }
+
+  .sidebar a{
+    margin:0;
+    padding:6px;
+    font-size:11px;
+    text-align:center;
+    flex:1;
+  }
+
+  .main{
+    margin-left:0;
+    width:100%;
+    padding:20px;
+    margin-bottom:90px;
+  }
+
+  .search-section,
+  .mood-section,
+  .genres-section,
+  .playlist-section,
+  .artist-section,
+  .release-section{
+    padding:20px 0 35px;
+  }
+
+  .search-section h1,
+  .mood-section h2,
+  .genres-section h2,
+  .playlist-section h2,
+  .artist-section h2,
+  .release-section h2{
+    text-align:center;
+  }
+
+  .mood-container,
+  .genres-container,
+  .artist-container{
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+  }
+
+  .playlist-container,
+  .release-container{
+    grid-template-columns:1fr;
+  }
+}
+
+/* Small Mobile */
+
+@media (max-width:480px){
+
+.mood-container,
+.genres-container,
+.artist-container{
+    grid-template-columns:1fr;
+}
+
+.search-section h1{
+    font-size:28px;
+}
+
+.search-box input{
+    font-size:14px;
+}
+
+.genre-card,
+.mood-card{
+    padding:22px;
+}
+
+.playlist-card h3,
+.artist-card h3,
+.release-card h3{
+    font-size:18px;
+}
+
+}
+.no-result{
+    display:none;
+    text-align:center;
+    color:#B3B3B3;
+    font-size:18px;
+    margin:30px 0;
+}
+.top-searches{
+    padding:0 8% 30px;
+}
+
+.top-searches h2{
+    font-size:24px;
+    margin-bottom:18px;
+}
+
+.search-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.tag{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.1);
+    color:white;
+    padding:10px 18px;
+    border-radius:30px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.tag:hover{
+    background:#A855F7;
+    transform:translateY(-2px);
+}
+    </style>
+    <body>
+        
+
+<nav class="sidebar">
+
+    <div class="logo">
+        <img src="musiclogo.jpg" alt="logo">
+        <span>TuneWave</span>
+    </div>
+
+    <a href="home.html"> Home</a>
+    <a href="explore.html" class="active"> Explore</a>
+    <a href="playlists.html"> Playlist</a>
+    <a href="favorites.html"> Favorites</a>
+    <a href="artists.html">Artists</a>
+    
+
+</nav>
+
+<div class="main">
+<section class="search-section">
+
+    <h1>Explore</h1>
+
+    <p>Discover songs, artists and albums.</p>
+
+    <div class="search-box">
+        <input type="text" placeholder="Search songs, artists, albums">
+    </div>
+
+
+</section>
+<section class="top-searches">
+
+    <h2>Top Searches</h2>
+
+    <div class="search-tags">
+        <span class="tag">Anirudh</span>
+        <span class="tag">A.R. Rahman</span>
+        <span class="tag">Love Hits</span>
+        <span class="tag">Lo-Fi</span>
+        <span class="tag">Workout</span>
+        <span class="tag">Yuvan</span>
+    </div>
+
+</section>
+    <p id="noResult" class="no-result">No results found</p>
+<!-- Browse by Mood -->
+
+<section class="mood-section">
+    <h2>Browse by Mood</h2>
+
+    <div class="mood-container">
+
+        <div class="mood-card mood-card-1">
+           
+            <h3>Chill</h3>
+        </div>
+ 
+         <div class="mood-card mood-card-2">
+            
+            <h3>Happy</h3>
+        </div>
+         <div class="mood-card mood-card-3">
+            
+            <h3>Sad</h3>
+        </div>
+
+        <div class="mood-card mood-card-4">
+          
+            <h3>Workout</h3>
+        </div>
+        <div class="mood-card mood-card-5">
+            
+            <h3>Sleep</h3>
+        </div>
+        <div class="mood-card mood-card-6">
+           
+            <h3>Party</h3>
+        </div>
+
+    </div>
+</section>
+<!-- Genres -->
+
+<section class="genres-section" id="genres">
+
+    <h2>Genres</h2>
+
+    <div class="genres-container">
+
+        <div class="genre-card pop genre-1"> Pop</div>
+
+        <div class="genre-card rock genre-2"> Rock</div>
+
+        <div class="genre-card melody genre-3">Melody</div>
+
+        <div class="genre-card hiphop genre-4">Hip-Hop</div>
+
+        <div class="genre-card jazz genre-5">Jazz</div>
+
+        <div class="genre-card edm genre-6">EDM</div>
+
+    </div>
+
+</section>
+<!-- Featured Playlists -->
+
+<!-- Featured Playlists -->
+
+<section class="playlist-section">
+
+    <h2>Featured Playlists</h2>
+
+    <div class="playlist-container">
+
+        <div class="playlist-card playlist-1">
+            <h3>Tamil Vibes</h3>
+            <p>25 Songs</p>
+        </div>
+
+        <div class="playlist-card playlist-2">
+            <h3>Love Hits</h3>
+            <p>18 Songs</p>
+        </div>
+
+        <div class="playlist-card playlist-3">
+            <h3>Lo-Fi Night</h3>
+            <p>30 Songs</p>
+        </div>
+
+        <div class="playlist-card playlist-4">
+            <h3>Workout Mix</h3>
+            <p>22 Songs</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="artist-section">
+
+    <h2>Popular Artists</h2>
+
+    <div class="artist-container">
+
+        <div class="artist-card artist-1">
+            <h3>Anirudh</h3>
+            <p>250 Songs</p>
+        </div>
+
+        <div class="artist-card artist-2">
+            <h3>A.R. Rahman</h3>
+            <p>320 Songs</p>
+        </div>
+
+        <div class="artist-card artist-3">
+            <h3>Sid Sriram</h3>
+            <p>180 Songs</p>
+        </div>
+
+        <div class="artist-card artist-4">
+            <h3>Yuvan</h3>
+            <p>210 Songs</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- New Releases -->
+
+<section class="release-section">
+
+    <h2>New Releases</h2>
+
+    <div class="release-container">
+
+        <div class="release-card release-1">
+            <h3>Golden Sparrow</h3>
+            <p>Anirudh</p>
+        </div>
+
+        <div class="release-card release-2">
+            <h3>Kaadhal Vibes</h3>
+            <p>Sid Sriram</p>
+        </div>
+
+        <div class="release-card release-3">
+            <h3>Midnight Beats</h3>
+            <p>A.R. Rahman</p>
+        </div>
+
+        <div class="release-card release-4">
+            <h3>Energy Mode</h3>
+            <p>Yuvan</p>
+        </div>
+
+    </div>
+    </div>
+
+</section>
+<script>
+    
+
+const search = document.querySelector(".search-box input");
+const noResult = document.getElementById("noResult");
+
+const cards = document.querySelectorAll(
+".mood-card, .genre-card, .playlist-card, .artist-card, .release-card"
+);
+
+const sections = document.querySelectorAll(
+".mood-section, .genres-section, .playlist-section, .artist-section, .release-section"
+);
+
+search.addEventListener("keyup", () => {
+
+    const value = search.value.toLowerCase();
+    let found = 0;
+
+    cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+
+        if(text.includes(value)){
+            card.style.display = "";
+            found++;
+        }else{
+            card.style.display = "none";
+        }
+    });
+
+    if(found === 0 && value !== ""){
+        noResult.style.display = "block";
+        sections.forEach(sec => sec.style.display = "none");
+    }else{
+        noResult.style.display = "none";
+        sections.forEach(sec => sec.style.display = "block");
+    }
+
+});
+
+
+document.querySelectorAll(".mood-card").forEach(card=>{
+
+    card.addEventListener("click",()=>{
+
+        document.querySelectorAll(".mood-card").forEach(c=>{
+            c.classList.remove("active");
+        });
+
+        card.classList.add("active");
+
+    });
+
+});
+
+
+document.querySelectorAll(".genre-card").forEach(card=>{
+
+    card.addEventListener("click",()=>{
+
+        document.querySelectorAll(".genre-card").forEach(c=>{
+            c.classList.remove("active");
+        });
+
+        card.classList.add("active");
+
+    });
+
+});
+
+</script>
+        
+    
+
+    </body>
+    
+</html>

@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TUNEWAVE</title>
+    </head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body{
+            background: #0F0F1A;
+        }
+        .nav-bar{
+            position: fixed;
+}
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    padding-top: 90px;
+}
+html, body{
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body{
+    min-height: 100vh;
+    padding-bottom: 100px;   
+}
+
+.nav-bar-link a.active{
+    color:#A855F7;
+    font-weight:bold;
+}
+.nav-bar-link a.active{
+    color:#A855F7;
+    font-weight:bold;
+}
+        .nav-bar{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            left: 0;
+            top: 0;
+            background:rgba(15,15,26,.5);
+            background:rgba(255,255,255,0.08); 
+            backdrop-filter: blur(15px);
+            z-index:1000;
+            transition:0.5s ease; 
+        }
+        .logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    min-width:260px;
+}
+
+.logo-img{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    object-fit:cover;
+    margin:0;
+    padding:0;
+}
+
+.head-1{
+    color:#fff;
+    font-size:32px;
+    font-weight:700;
+    letter-spacing:1px;
+    margin:0;
+}
+        .nav-bar-link{
+            display: flex;
+            gap:40px;
+            color:antiquewhite;
+            
+        }
+        .nav-bar-link a{
+            text-decoration: none;
+            color: beige;
+            transition: .3s;
+        }
+        .nav-bar-link a:hover{
+            color:#A855F7;
+        }
+       
+        .search-icon{
+            position: relative;
+        }
+        .search-icon{
+    position: relative;
+}
+
+.search-icon::before{
+    content: "\1F50D";
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+}
+
+#search{
+    width: 220px;
+    padding: 10px 15px 10px 38px;
+    border: none;
+    border-radius: 25px;
+    background: #242846;
+    color: white;
+    outline: none;
+}
+#search:focus{
+    border: 1px solid #A855F7;
+    box-shadow: 0 0 10px rgba(168,85,247,.5);
+}
+        .favorite:before{
+            content:"\01FA77";
+            padding: right 30px;
+        }
+        .favorite{
+            color:white;
+            font-size:20px;
+        }
+
+#navFavCount{
+    font-size:14px;
+    margin-left:4px;
+}
+        .icon{
+            display: flex;
+            gap: 20px;
+            color: white;
+            cursor: pointer;
+        }
+        .nav-bar.sidebar{
+            top: 50%;
+            left: 20px;
+            transform:translateY(-50%);
+            width:220px;
+            height:75vh;
+            flex-direction:column;
+            justify-content:flex-start;
+            align-items:flex-start;
+        }
+        .navbar.sidebar .nav-links{
+            flex-direction:column;
+            margin-top:30px;
+            gap:20px;
+        }
+
+.overlay{
+    position:absolute;
+    inset: 0;
+    
+}
+
+
+.section-1{
+    height:60vh;
+    background:url("image-banner-home.png") center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    text-align:center;
+}
+
+.music-content{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:80px;
+    max-width:650px;
+    z-index:2;      
+}
+
+.music-text-1{
+    font-size:28px;
+    color:#fff;
+    margin-bottom:15px;
+}
+
+.music-text-2{
+    font-size:48px;
+    color:#fff;
+    line-height:1.15;
+    margin-bottom:25px;
+}
+
+.btn{
+    margin:0;
+    padding:14px 28px;
+}
+.btn{
+    background:#A855F7;
+    color:#fff;
+    border:none;
+    border-radius:30px;
+    padding:14px 30px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#9333EA;
+    transform:scale(1.05);
+    box-shadow:0 0 20px rgba(168,85,247,.5);
+}
+
+.trending{
+    background:#070B1A;
+    padding:60px 8%;
+    color:white;
+}
+.trending{
+    padding: 70px 8%;
+    background: linear-gradient(
+        180deg,
+        #08112D 0%,
+        #0B1338 45%,
+        #070B1A 100%
+    );
+}
+
+.title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+.title a{
+    color:#C084FC;
+    text-decoration:none;
+}
+.song-trending{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+.card{
+    background:#161B2E;
+    padding:15px;
+    border-radius:18px;
+    transition:.3s;
+    text-align:center;
+}
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 20px rgba(168,85,247,.4);
+}
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:12px;
+}
+.card h3{
+    margin-top:12px;
+
+}
+.card p{
+    color:#B8B8B8;
+    margin:8px 0;
+}
+.card-1 p{
+    color:#9CA3AF;
+    margin-top:6px;
+}
+.card button{
+    background:#A855F7;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:30px;
+    cursor:pointer;
+}
+.card-button:hover{
+    background:#9333EA;
+}
+.music-text-3{
+    padding: 20px;
+}
+.music-text-3:before{
+    content:"\1F525";
+}
+
+
+.fav-text:before{
+    content:"\2764\FE0F";
+}
+
+.playbtn{
+  background:#A855F7;
+  color:white;
+  border:none;
+  padding:10px 18px;
+  border-radius:30px;
+  cursor:pointer;
+}
+
+.playbtn::before{
+  content:"\25B6";     
+  margin-right:8px;
+}
+
+.playbtn.pause::before{
+  content:"\23F8";      
+}
+.favbtn::before{
+    content:"\2661";
+    font-size:22px;
+}
+.favbtn.active::before{
+    content:"\2764\FE0F";
+}
+.favbtn{
+    background:#242846;
+    color:white;
+    border:none;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    font-size:22px;
+    cursor:pointer;
+    
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:0;
+}
+
+
+.favbtn.active{
+  color: red;
+    
+}
+.artist{
+    padding: 70px 8%;
+    background: #070B1A;
+    color: white;
+}
+
+.title-2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.title-2 a{
+    color: #C084FC;
+    text-decoration: none;
+}
+
+.artist{
+   background:#070B1A;
+    padding:60px 18%;
+    color:white;
+     
+}
+.artist-text-1{
+    color: white;
+    padding: 20px;
+}
+.artist-text-1{
+    padding-left: 30px;
+}
+.artist{
+    padding: 70px 8%;
+    background: linear-gradient(
+        180deg,
+        #08112D 0%,
+        #0B1338 45%,
+        #070B1A 100%
+    );
+    color: white;
+}
+.artist-text-1:before{
+    content:"\1F3A4";
+   
+}
+.popular{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 25px;
+    padding: 20px;
+}
+.card-1{
+    background: #161B2E;
+    padding: 18px;
+    border-radius: 18px;
+    text-align: center;
+    transition: .3s;
+}
+.card-1 img{
+   width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #A855F7;
+}
+.card-1:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px rgba(168,85,247,.4);
+}
+.card-1 h3{
+    margin-bottom: 6px;
+    color: white;
+}
+.card-1 p{
+    color: #B8B8B8;
+    font-size: 14px;
+}
+.card-1{
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.card-1:hover img{
+    transform:scale(1.08);
+}
+
+.card-1 img{
+    transition:0.3s;
+}
+
+.card-1 p{
+    color:#9CA3AF;
+    margin-top:6px;
+    font-size:13px;
+}
+.artist-name{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-top:10px;
+}
+
+.verified{
+    width:20px;
+    height:20px;
+    background:#3B82F6;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:12px;
+    font-weight:bold;
+}
+.verified:before{
+    content:"\2714";
+}
+
+.card-1 p{
+    color:#9CA3AF;
+    margin-top:6px;
+    font-size:13px;
+}
+.title-2 a{
+    color: #C084FC;
+    text-decoration: none;
+    padding-right: 20px;
+}
+.genres{
+    padding:70px 8%;
+    background:#0F0F1A;
+    color:white;
+}
+
+.genre-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.genre-card{
+    border-radius:18px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.genre-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 20px rgba(168,85,247,.5);
+}
+
+.genre-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.genre-card h3{
+    padding:15px 15px 5px;
+    font-size:22px;
+}
+
+.genre-card p{
+    padding:0 15px 18px;
+    color:#F3F4F6;
+}
+
+.genre-card-pop{
+    background:linear-gradient(135deg,#EC4899,#A855F7);
+}
+
+.genre-card-rock{
+    background:linear-gradient(135deg,#EF4444,#7C3AED);
+}
+
+.genre-card-melody{
+    background:linear-gradient(135deg,#06B6D4,#2563EB);
+}
+
+.genre-card-hiphop{
+    background:linear-gradient(135deg,#F59E0B,#EA580C);
+}
+.genre-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    display:block;
+}
+.title-3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.title-3 a{
+    color: #C084FC;
+    text-decoration: none;
+    padding-right: 20px;
+}
+
+.geners-text-1:before{
+    content:"\266C";
+    background: linear-gradient(45deg, #ff007f, #7f00ff, #00f0ff);
+}
+
+.moods{
+    padding:70px 8%;
+    background:#0F0F1A;
+    color:white;
+}
+
+.title-4{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.title-4 a{
+    color:#C084FC;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.mood-text::before{
+    content:"\266B";
+    margin-right:8px;
+}
+
+.mood-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.mood-card{
+    padding:30px 20px;
+    border-radius:18px;
+    text-align:center;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.mood-card:hover{
+    transform:translateY(-8px);
+}
+
+.mood-card::before{
+    display:block;
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.happy{
+    background:linear-gradient(135deg,#EC4899,#A855F7);
+}
+.happy::before{
+    content:"\1F600";
+}
+
+.chill{
+    background:linear-gradient(135deg,#38BDF8,#2563EB);
+}
+.chill::before{
+    content:"\1F319";
+}
+
+.workout{
+    background:linear-gradient(135deg,#F59E0B,#EA580C);
+}
+.workout::before{
+    content:"\1F4AA";
+}
+
+.sleep{
+    background:linear-gradient(135deg,#64748B,#312E81);
+}
+.sleep::before{
+    content:"\1F634";
+}
+
+
+
+.recent{
+    padding:70px 8%;
+    background:#070B1A;
+    color:white;
+}
+
+.title-5{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:25px;
+}
+
+.title-5 a{
+    color:#C084FC;
+    text-decoration:none;
+}
+
+.recent-song{
+    display:grid;
+    grid-template-columns:40px 1fr 70px 50px;
+    align-items:center;
+    background:#161B2E;
+    padding:15px 20px;
+    border-radius:14px;
+    margin-bottom:15px;
+    
+
+}
+
+.recent-song h4{
+    color: white;
+}
+
+.recent-song p{
+    color: #9CA3AF;
+    margin-left: 30px;
+}
+
+
+
+.recent-song button{
+    background:#A855F7;
+    border:none;
+    color:white;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    cursor:pointer;
+}
+.recent-text:before{
+    content:"\1F553";   
+}
+.music::before{
+    content:"\1F3B5";   
+}
+
+.rain::before{
+    content:"\1F327";   
+}
+
+.drive::before{
+    content:"\1F697";   
+}
+
+.energy::before{
+    content:"\26A1";    
+}
+
+.play::before{
+    content:"\25B6";    
+}
+.play{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:#A855F7;
+    cursor:pointer;
+    position:relative;
+}
+
+.play::before{
+    content:"\25B6";   
+    color:white;
+    font-size:18px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+.play.pause::before{
+    content:"\23F8";   
+}
+.top-charts{
+    padding:70px 8%;
+    background:#0F0F1A;
+    color:white;
+}
+
+.title-6{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.top-chart-text::before{
+    content:"\1F3C6";
+}
+.chart-song{
+    display:grid;
+    grid-template-columns:50px 1fr 40px;
+    align-items:center;
+    background:#161B2E;
+    padding:15px 20px;
+    border-radius:14px;
+    margin-bottom:15px;
+}
+
+.rank{
+    font-size:22px;
+    font-weight:bold;
+    color:#A855F7;
+}
+
+.rank-up::before{
+    content:"\25B2";
+    color:#22C55E;
+    font-size:18px;
+}
+
+.rank-down::before{
+    content:"\25BC";
+    color:#EF4444;
+    font-size:18px;
+}
+.top-chart::before{
+    content:"\1F3C6";  
+}
+
+.rank-up::before{
+    content:"\25B2";   
+}
+
+.rank-down::before{
+    content:"\25BC";    
+}
+/* Common View All Style */
+.view-all a{
+    color:#C084FC;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.view-all a::after{
+    content:"\2192";
+    margin-left:4px;
+    color:white;
+    transition:.3s;
+}
+
+.view-all a:hover{
+    color:#A855F7;
+}
+
+.view-all a:hover::after{
+    margin-left:8px;
+}
+.footer{
+    background:#070B1A;
+    color:white;
+    padding:60px 8% 25px;
+}
+
+.footer-content{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+}
+
+.footer h3{
+    margin-bottom:15px;
+    color:#C084FC;
+}
+
+.footer a{
+    display:block;
+    color:#D1D5DB;
+    text-decoration:none;
+    margin-bottom:8px;
+}
+
+.footer a:hover{
+    color:#A855F7;
+}
+
+.footer p{
+    color:#9CA3AF;
+    margin-bottom:8px;
+}
+
+.footer hr{
+    border:1px solid #242846;
+    margin:30px 0 20px;
+}
+
+.copy{
+    text-align:center;
+    color:#6B7280;
+}
+.instagram::before{ content:"\1F4F7"; }  
+.spotify::before{ content:"\1F3A7"; }     
+.youtube::before{ content:"\25B6"; }    
+
+.footer-social span{
+    font-size:24px;
+    margin-right:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.footer-social span:hover{
+    color:#A855F7;
+    transform:translateY(-3px);
+}
+
+@media (max-width:768px){
+
+    body{
+        padding-top:140px;
+    }
+
+    .nav-bar{
+        flex-direction:column;
+        gap:15px;
+        padding:15px;
+    }
+
+    .logo{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:10px;
+        width:100%;
+    }
+
+    .logo-img{
+        width:50px;
+        height:50px;
+        margin:0;
+    }
+
+    .head-1{
+        margin:0;
+        font-size:28px;
+    }
+
+    .nav-bar-link{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:22px;
+    }
+
+    .icon{
+        flex-direction:column;
+        align-items:center;
+        gap:10px;
+    }
+
+    #search{
+        width:280px;
+    }
+
+    .section-1{
+        height:50vh;
+        padding:20px;
+    }
+
+    .music-content{
+        margin-top:0;
+        max-width:500px;
+    }
+
+    .music-text-1{
+        font-size:22px;
+    }
+
+    .music-text-2{
+        font-size:36px;
+    }
+
+    .song-trending,
+    .popular,
+    .genre-grid,
+    .mood-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-content{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .title,
+    .title-2,
+    .title-3,
+    .title-4,
+    .title-5,
+    .title-6{
+        align-items:center;
+    }
+@media screen and (max-width:768px){
+
+  .trending,
+  .artist,
+  .genres,
+  .moods,
+  .recent,
+  .top-charts,
+  .footer{
+    padding-left:90px;
+    padding-right:50px;
+  }
+
+  .song-trending,
+  .popular,
+  .genre-grid,
+  .mood-grid{
+    padding:5px 4px;
+    gap:16px;
+  }
+
+  .recent-song,
+  .chart-song{
+    margin-left:4px;
+    margin-right:4px;
+  }
+
+  .card,
+  .card-1,
+  .genre-card,
+  .mood-card{
+    width:100%;
+  }
+}
+}
+
+
+@media (max-width:480px){
+
+    body{
+        padding-top:180px;
+    }
+
+    .nav-bar{
+        padding:12px;
+        gap:12px;
+    }
+
+    .logo{
+        justify-content:center;
+        width:100%;
+    }
+
+    .logo-img{
+        width:42px;
+        height:42px;
+    }
+
+    .head-1{
+        font-size:22px;
+        margin:0;
+        
+    }
+
+    .nav-bar-link{
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:14px;
+        font-size:14px;
+    }
+
+    #search{
+        width:220px;
+    }
+
+    .icon{
+        gap:8px;
+    }
+
+    
+    .section-1{
+        height:45vh;
+        padding:15px;
+    }
+
+    .music-content{
+        max-width:100%;
+        margin-top:0;
+    }
+
+    .music-text-1{
+        font-size:18px;
+        margin-bottom:10px;
+    }
+
+    .music-text-2{
+        font-size:28px;
+        line-height:1.3;
+        margin-bottom:18px;
+    }
+
+    .btn{
+        width:180px;
+        padding:12px;
+        margin:auto;
+        display:block;
+    }
+
+    
+
+    .title,
+    .title-2,
+    .title-3,
+    .title-4,
+    .title-5,
+    .title-6{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    
+
+    .song-trending,
+    .popular,
+    .genre-grid,
+    .mood-grid{
+        grid-template-columns:1fr;
+    }
+
+    .card img,
+    .genre-card img{
+        height:220px;
+    }
+
+    .card-1 img{
+        width:110px;
+        height:110px;
+    }
+
+   
+
+    .recent-song{
+        grid-template-columns:1fr auto;
+        gap:10px;
+        padding:15px;
+    }
+
+    .recent-song p{
+        margin-left:0;
+    }
+
+    
+
+    .chart-song{
+        grid-template-columns:35px 1fr 25px;
+    }
+
+    .rank{
+        font-size:18px;
+    }
+
+    
+
+    .footer-content{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .footer-social{
+        justify-content:center;
+    }
+}
+
+@media (max-width:480px){
+
+  .head-1,
+  .music-text-1,
+  .music-text-2,
+  .music-text-3,
+  .artist-text-1,
+  .geners-text-1,
+  .mood-text,
+  .recent-text,
+  .top-chart-text,
+  .card h3,
+  .card-1 h3,
+  .genre-card h3,
+  .mood-card h3,
+  .recent-song h4,
+  .chart-song h4,
+  .footer h2,
+  .footer h3,
+  .copy{
+    text-align:center;
+    width:100%;
+  }
+
+  .title,
+  .title-2,
+  .title-3,
+  .title-4,
+  .title-5,
+  .title-6{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+
+  .music-content,
+  .artist-name,
+  .footer-content{
+    align-items:center;
+    text-align:center;
+  }
+
+  .recent-song,
+  .chart-song{
+    text-align:center;
+  }
+}
+.greeting{
+    color:#C084FC;
+    font-size:18px;
+    margin-bottom:18px;
+    font-weight:600;
+}
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    padding:60px 5%;
+    background:#0F0F1A;
+}
+
+.stat-box{
+    background:#161B2E;
+    padding:20px;
+    border-radius:18px;
+    text-align:center;
+}
+
+.stat-box h2{
+    color:#A855F7;
+    font-size:34px;
+}
+
+.stat-box p{
+    color:#D1D5DB;
+    margin-top:8px;
+}
+#topBtn{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:#A855F7;
+    color:white;
+    cursor:pointer;
+    display:none;
+}
+
+#topBtn::before{
+    content:"\2191";
+    font-size:22px;
+}
+    </style>
+    <body>
+        <div class="nav-bar">
+
+    <div class="logo">
+        <img src="musiclogo.jpg" class="logo-img" alt="TuneWave Logo">
+        <h1 class="head-1">TUNEWAVE</h1>
+
+    </div>
+
+    <ul class="nav-bar-link">
+        <a href="home.html" class="active">Home</a>
+        <a href="explore.html">Explore</a>
+        <a href="playlists.html">Playlists</a>
+        <a href="favorites.html">Favorites</a>
+        <a href="artists.html">Artists</a>
+        
+    </ul>
+
+    <div class="icon">
+        <div class="search-icon">
+            <input type="text" id="search" placeholder="Search songs..." onkeyup="searchSong()">
+        </div>
+        <span class="favorite"><span id="navFavCount">0</span></span>
+    </div>
+
+</div>
+        
+        <div class="section-1">
+            <div class="overlay"></div>
+            <div class="music-content">
+            <p class="music-text-1">Feel Every Beat</p>
+            <h2 class="music-text-2">Unlimited Music<br/>One Place.</h2>
+            <p id="greeting" class="greeting"></p>
+             <a href="explore.html"> <button class="btn">Explore Music</button></a>
+             </div>
+        </div>
+
+
+        <section class="trending">
+            <div class="title">
+                <h2 class="music-text-3">Trending now</h2>
+                <p class="fav-text"><span id="favcount">0</span></p>
+               <div class="view-all">
+                    <a href="#" onclick="showAll()">View all </a>
+                </div>
+            </div>
+                
+         
+
+            <div class="song-trending">
+            <div class="card" data-artist="aniruth" data-genre="pop">
+                <img src="chill-song.jpg" alt="chill-song">
+                <h3>chill vibes</h3>
+                <p>Relax Focus Calm</p>
+                <button class="playbtn" onclick="playHomeSong(this,'audio/nenjukkul.mp3')">
+                    <span>play now</span></button>
+                    <button class="favbtn" onclick=toggleFav(this)></button>
+           </div>
+
+           <div class="card" data-artist="a.r.rahman" data-genre="rock">
+                <img src="night-mood.jpg" alt="nightdrive-song">
+                <h3>Night Drive</h3>
+               <p>City Lights Midnight Beats</p>
+                <button class="playbtn" onclick="playHomeSong(this,'audio/Oru-Maalai.mp3')"><span>play now</span></button>
+                <button class="favbtn" onclick=toggleFav(this)></button>
+           </div>
+
+            <div class="card" data-artist="dhee" data-genre="melody">
+                <img src="rainy.jpg" alt="rain-song">
+                <h3>Rainy Mood</h3>
+               <p>Study  Coffee  Rain</p>
+                <button class="playbtn" onclick="playHomeSong(this,'audio/munbevaa.mp3')"><span>play now</span></button>
+                <button class="favbtn" onclick=toggleFav(this)></button>
+           </div>
+
+          <div class="card" data-artist="yuvan shankar raja" data-genre="hiphop">
+                <img src="energy.jpg" alt="energy-song">
+                <h3>Live Energy</h3>
+               <p>Party  Dance  Festival</p>
+                <button class="playbtn"  onclick="playHomeSong(this,'audio/why this kolaveri.mp3')"><span>play now</span></button>
+                <button class="favbtn" onclick=toggleFav(this)></button>
+           </div>
+         </div>
+         </section>
+         <section class="artist">
+         <div class="title-2">
+                <h2 class="artist-text-1">popular Artists</h2>
+                
+                    <div class="view-all">
+                          <a href="#">View all</a>
+                    </div>
+                </div>
+          
+            <div class="popular">
+                <div class="card-1" data-artist="anirudh" onclick="filterArtist('aniruth')">
+                    <img src="artist-1.jpg" alt="aniruth">
+                    <div class="artist-name">
+                    <h3>Aniruth</h3>
+                    <span class="verified"></span>
+                    </div>
+                    <p>Composer 145 Songs</p>
+                </div>
+
+                <div class="card-1" data-artist="arr" onclick="filterArtist('a.r.rahman')">
+                    <img src="artist-2.jpg" alt="A.R.Rahman">
+                    <div class="artist-name">
+                      <h3>A.R.Rahmans</h3>
+                    <span class="verified"></span>
+                    </div>
+                  
+                    <p>Oscar Winner 220 Songs</p>
+                </div>
+
+                <div class="card-1" data-artist="dhee" onclick="filterArtist('dhee')">
+                    <img src="artist-3.jpg" alt="Dhee">
+                    <div class="artist-name">
+                   <h3>Dhee</h3>
+                    <span class="verified"></span>
+                    </div>
+                    
+                    <p>ndie Pop 48 Songs</p>
+                </div>
+
+                <div class="card-1" data-artist="yuvan" onclick="filterArtist('yuvan shankar raja')">
+                    <img src="artist-4.jpg" alt="Yuvan Sankar Raja">
+                    <div class="artist-name">
+                  <h3>Yuvan Sankar Raja</h3>
+                    <span class="verified"></span>
+                    </div>
+                    
+                    <p>Melody King 180 Songs</p>
+                </div>
+                
+
+            </div>
+
+        
+        
+         </section>
+
+          <section class="genres">
+         <div class="title-3">
+                <h2 class="geners-text-1">Browse Genres</h2>
+               <div class="view-all">
+                <a href="">view all</a>
+                </div> 
+            </div> 
+           
+            <div class="genre-grid">
+                <div class="genre-card genre-card-pop"  onclick="filterGenre('pop')">
+                    <img src="pop.jpg" alt="pop">
+                <h3>Pop</h3>
+                <p>85 Songs</p>
+                </div>
+
+                <div class="genre-card genre-card-rock" onclick="filterGenre('rock')">
+                    <img src="rock.jpg" alt="rock">
+                <h3>Rock</h3>
+                <p>120 Songs</p>
+                </div>
+
+                <div class="genre-card genre-card-melody" onclick="filterGenre('melody')">
+                    <img src="melody.jpg" alt="melody">
+                <h3>Melody</h3>
+                <p>140 Songs</p>
+                </div>
+
+                <div class="genre-card genre-card-hiphop" onclick="filterGenre('hiphop')">
+                    <img src="hiphop.jpg" alt="hiphop">
+                <h3>Hip Hop</h3>
+                <p>150 Songs</p>
+                </div>
+
+            </div>
+
+        
+        
+         </section>
+       
+          <section class="moods">
+
+    <div class="title-4">
+        <h2 class="mood-text">Browse by Mood</h2>
+        <div class="view-all">
+        <a href="#">View All</a>
+        </div>
+    </div>
+
+    <div class="mood-grid">
+
+        <div class="mood-card happy">
+            <h3>Happy</h3>
+            <p>Feel Good Hits</p>
+        </div>
+
+        <div class="mood-card chill">
+            <h3>Chill</h3>
+            <p>Lo-fi & Relax</p>
+        </div>
+
+        <div class="mood-card workout">
+            <h3>Workout</h3>
+            <p>Energy Boost</p>
+        </div>
+
+        <div class="mood-card sleep">
+            <h3>Sleep</h3>
+            <p>Peaceful Nights</p>
+        </div>
+
+    </div>
+
+</section>
+<section class="stats">
+
+  <div class="stat-box">
+    <h2>25+</h2>
+    <p>Songs</p>
+  </div>
+
+  <div class="stat-box">
+    <h2>10</h2>
+    <p>Artists</p>
+  </div>
+
+  <div class="stat-box">
+    <h2>4</h2>
+    <p>Playlists</p>
+  </div>
+
+  <div class="stat-box">
+    <h2>1K+</h2>
+    <p>Listeners</p>
+  </div>
+
+</section>
+
+
+<section class="recent">
+  <div class="title-5">
+    <h2 class="recent-text"> Recently Played</h2>
+    <div class="view-all">
+    <a href="#">View All</a>
+    </div>
+  </div>
+
+  <div class="recent-list">
+
+    <div class="recent-song">
+
+      <h4>Chill Vibes</h4>
+      <p>03:45</p>
+      <button class="play" onclick="recentPlay(this)"></button>
+    </div>
+
+    <div class="recent-song">
+        
+
+      <h4>Rainy Mood</h4>
+      <p>04:12</p>
+      <button class="play" onclick="recentPlay(this)"></button>
+
+    </div>
+
+    <div class="recent-song">
+
+      <h4>Night Drive</h4>
+      <p>03:58</p>
+      <button class="play" onclick="recentPlay(this)"></button>
+   
+    </div>
+
+    <div class="recent-song">
+
+      <h4>Live Energy</h4>
+      <p>02:56</p>
+      <button class="play" onclick="recentPlay(this)"></button>
+  
+    </div>
+
+  </div>
+</section>
+
+<section class="top-charts">
+
+    <div class="title-6">
+        <h2 class="top-chart-text">Top Charts</h2>
+       <div class="view-all">
+            <a href="#">View All</a>
+     </div>
+    </div>
+
+    <div class="chart-list">
+
+        <div class="chart-song">
+            <span class="rank">1</span>
+            <h4>Chill Vibes</h4>
+            <span class="rank-up"></span>
+        </div>
+
+        <div class="chart-song">
+            <span class="rank">2</span>
+            <h4>Night Drive</h4>
+            <span class="rank-up"></span>
+        </div>
+
+        <div class="chart-song">
+            <span class="rank">3</span>
+            <h4>Rainy Mood</h4>
+            <span class="rank-down"></span>
+        </div>
+
+        <div class="chart-song">
+            <span class="rank">4</span>
+            <h4>Live Energy</h4>
+            <span class="rank-up"></span>
+        </div>
+
+    </div>
+
+</section>
+<button id="topBtn" onclick="topFunction()"></button>
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div class="footer-logo">
+            <h2>TUNEWAVE</h2>
+            <p>Your Music. Your Mood.</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <a href="home.html">Home</a>
+            <a href="explore.html">Explore</a>
+            <a href="artists.html">Artists</a>
+            <a href="favorites.html">favorites</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Contact</h3>
+            <p>support@tunewave.com</p>
+            <p>+91 98765 43210</p>
+        </div>
+
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <span class="instagram"></span>
+            <span class="spotify"></span>
+            <span class="youtube"></span>
+        </div>
+
+    </div>
+
+    <hr>
+
+<p class="copy">© 2026 TuneWave. All Rights Reserved.</p>
+
+</footer>
+<audio id="homePlayer"></audio>
+
+
+
+        
+        <script>
+        const homePlayer = document.getElementById("homePlayer");
+let currentBtn = null;
+let currentSong = "";
+
+function playHomeSong(btn, song){
+
+    if(currentBtn && currentBtn !== btn){
+        currentBtn.classList.remove("pause");
+        currentBtn.querySelector("span").innerHTML = "play now";
+    }
+
+    if(currentSong === song && !homePlayer.paused){
+        homePlayer.pause();
+        btn.classList.remove("pause");
+        btn.querySelector("span").innerHTML = "play now";
+        return;
+    }
+
+    currentSong = song;
+    homePlayer.src = song;
+    homePlayer.play();
+
+    currentBtn = btn;
+    btn.classList.add("pause");
+    btn.querySelector("span").innerHTML = "pause";
+}
+
+homePlayer.onended = function(){
+    if(currentBtn){
+        currentBtn.classList.remove("pause");
+        currentBtn.querySelector("span").innerHTML = "play now";
+    }
+    currentSong = "";
+};
+
+let count = 0;
+
+function toggleFav(btn){
+
+  btn.classList.toggle("active");
+
+  if(btn.classList.contains("active")){
+    count++;
+  }else{
+    count--;
+  }
+
+  document.getElementById("favcount").innerHTML = count;
+  document.getElementById("navFavCount").innerHTML = count;
+}
+
+function searchSong(){
+
+    let input = document.getElementById("search").value.toLowerCase();
+
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(function(card){
+
+        let song = card.querySelector("h3").textContent.toLowerCase();
+        let artist = card.getAttribute("data-artist").toLowerCase();
+
+        if(song.includes(input) || artist.includes(input)){
+            card.style.display = "block";
+        }else{
+            card.style.display = "none";
+        }
+
+    });
+
+}
+
+function filterArtist(artist){
+   let songs = document.querySelectorAll(".card");
+    songs.forEach(function(song){
+        if(song.dataset.artist===artist){
+            song.style.display="block";
+        }
+        else{
+            song.style.display="none";
+        }
+    });
+}
+
+function filterGenre(genre){
+    let songs=document.querySelectorAll(".card");
+    songs.forEach(function(song){
+        if(song.dataset.genre===genre){
+            song.style.display="block";
+        }
+        else{
+            song.style.display="none";
+        }
+    });
+}
+
+function showAll(){
+    let songs=document.querySelectorAll(".card")
+
+    songs.forEach(function(song){
+        song.style.display="block";
+    })
+}
+
+function recentPlay(btn){
+
+    btn.classList.toggle("pause");
+
+    if(btn.classList.contains("pause")){
+        btn.innerHTML = "";
+    }else{
+        btn.innerHTML = "";
+    }
+
+}
+const hour = new Date().getHours();
+const greet = document.getElementById("greeting");
+
+if(hour < 12){
+    greet.innerHTML = "Good Morning 🎵";
+}
+else if(hour < 17){
+    greet.innerHTML = "Good Afternoon 🎧";
+}
+else{
+    greet.innerHTML = "Good Evening 🌙";
+}
+const topBtn = document.getElementById("topBtn");
+
+window.onscroll = function(){
+
+    if(document.documentElement.scrollTop > 300){
+        topBtn.style.display = "block";
+    }else{
+        topBtn.style.display = "none";
+    }
+
+}
+
+function topFunction(){
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+    
+        </script>
+       
+    
+      
+
+        
+
+    </body>
+</html>

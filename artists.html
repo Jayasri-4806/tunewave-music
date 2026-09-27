@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TuneWave | Artists</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#0F0F1A;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Sidebar */
+
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:240px;
+    height:100vh;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
+    border-right:1px solid rgba(255,255,255,.1);
+    padding:30px 20px;
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#A855F7;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:35px;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:14px 16px;
+    margin-bottom:10px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+    background:rgba(168,85,247,.25);
+    color:#C084FC;
+}
+
+/* Main */
+
+.main{
+    margin-left:240px;
+    padding:40px;
+}
+
+/* Hero */
+
+.artist-hero{
+    background:linear-gradient(180deg,#6D28D9,#1A1A2E);
+    border-radius:24px;
+    padding:60px 30px;
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.type{
+    text-transform:uppercase;
+    letter-spacing:3px;
+    color:#E9D5FF;
+    margin-bottom:10px;
+}
+
+.artist-hero h1{
+    font-size:58px;
+    margin-bottom:15px;
+}
+
+.desc{
+    color:#D1D5DB;
+    font-size:18px;
+    max-width:650px;
+    margin:auto;
+    line-height:1.6;
+}
+
+/* Artist Cards */
+
+.title h2{
+    font-size:30px;
+    margin-bottom:25px;
+}
+
+.artist-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+}
+
+.artist-card{
+    background:#161B2E;
+    border-radius:20px;
+    padding:28px 22px;
+    min-height:340px;   /* Increase height */
+    text-align:center;
+    transition:.3s;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.artist-card img{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #A855F7;
+    margin:0 auto 18px;
+}
+
+.artist-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 25px rgba(168,85,247,.35);
+}
+
+
+
+.artist-card h3{
+    font-size:18px;
+    margin-bottom:6px;
+}
+
+.artist-card p{
+    color:#9CA3AF;
+    margin-bottom:16px;
+}
+
+.follow{
+    width:100%;
+    padding:11px;
+    border:none;
+    border-radius:30px;
+    background:#A855F7;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.follow:hover{
+    background:#9333EA;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.sidebar{
+    width:100%;
+    height:70px;
+    top:auto;
+    bottom:0;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding:0 8px;
+}
+
+.logo{
+    display:none;
+}
+
+.sidebar a{
+    margin:0;
+    padding:8px;
+    font-size:11px;
+}
+
+.main{
+    margin-left:0;
+    padding:20px;
+    margin-bottom:90px;
+}
+
+.artist-hero{
+    padding:35px 20px;
+}
+
+.artist-hero h1{
+    font-size:36px;
+}
+
+.desc{
+    font-size:15px;
+}
+
+.title h2{
+    text-align:center;
+    font-size:24px;
+}
+
+.artist-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.artist-card{
+    padding:16px;
+}
+
+.artist-card img{
+    width:90px;
+    height:90px;
+}
+
+.follow{
+    font-size:14px;
+    padding:9px;
+}
+}
+
+@media(max-width:480px){
+
+.artist-grid{
+    grid-template-columns:1fr;
+}
+
+.artist-card img{
+    width:100px;
+    height:100px;
+}
+}
+.follow.active{
+    background:#22C55E;
+    color:white;
+}
+.top-songs{
+    margin-top:50px;
+}
+
+.top-songs h2{
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.song-row{
+    display:grid;
+    grid-template-columns:50px 1fr 70px;
+    align-items:center;
+    background:#161B2E;
+    padding:16px 20px;
+    border-radius:14px;
+    margin-bottom:12px;
+    transition:.3s;
+}
+
+.song-row:hover{
+    background:#242846;
+}
+
+.song-row span{
+    color:#A855F7;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.song-info h4{
+    margin-bottom:4px;
+}
+
+.song-info p{
+    color:#9CA3AF;
+    font-size:14px;
+}
+
+.song-row small{
+    color:#D1D5DB;
+    text-align:right;
+}
+    </style>
+</head>
+
+<body>
+
+<nav class="sidebar">
+
+    <div class="logo">
+        <img src="musiclogo.jpg" alt="logo">
+        <span>TuneWave</span>
+    </div>
+
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="playlists.html">Playlists</a>
+    <a href="favorites.html">Favorites</a>
+    <a href="artists.html" class="active">Artists</a>
+    
+
+</nav>
+
+<div class="main">
+
+    <!-- Hero -->
+    <section class="artist-hero">
+        <p class="type">DISCOVER MUSIC</p>
+        <h1>Popular Artists</h1>
+        <p class="desc">
+            Follow your favourite Tamil artists and explore their top songs.
+        </p>
+    </section>
+
+    <!-- Artists -->
+    <section class="popular-artists">
+
+        <div class="title">
+            <h2>Popular Artists</h2>
+        </div>
+
+        <div class="artist-grid">
+
+            <div class="artist-card">
+                <img src="artist-1.jpg" alt="Anirudh">
+                <h3>Anirudh</h3>
+                <p>Music Director</p>
+                <button class="follow">Follow</button>
+            </div>
+
+            <div class="artist-card">
+                <img src="artist-2.jpg" alt="A. R. Rahman">
+                <h3>A. R. Rahman</h3>
+                <p>Oscar Winner</p>
+                <button class="follow">Follow</button>
+            </div>
+
+            <div class="artist-card">
+                <img src="artist-3.jpg" alt="Sid Sriram">
+                <h3>Sid Sriram</h3>
+                <p>Playback Singer</p>
+                <button class="follow">Follow</button>
+            </div>
+
+            <div class="artist-card">
+                <img src="haris-img.jpg" alt="Harris Jayaraj">
+                <h3>Harris Jayaraj</h3>
+                <p>Composer</p>
+                <button class="follow">Follow</button>
+            </div>
+
+        </div>
+
+    </section>
+    <section class="top-songs">
+
+    <h2>Top Songs</h2>
+
+    <div class="song-list">
+
+        <div class="song-row">
+            <span>01</span>
+            <div class="song-info">
+                <h4>Hukum</h4>
+                <p>Anirudh</p>
+            </div>
+            <small>4:12</small>
+        </div>
+
+        <div class="song-row">
+            <span>02</span>
+            <div class="song-info">
+                <h4>Munbe Vaa</h4>
+                <p>A. R. Rahman</p>
+            </div>
+            <small>5:31</small>
+        </div>
+
+        <div class="song-row">
+            <span>03</span>
+            <div class="song-info">
+                <h4>Adiye</h4>
+                <p>Sid Sriram</p>
+            </div>
+            <small>4:20</small>
+        </div>
+
+        <div class="song-row">
+            <span>04</span>
+            <div class="song-info">
+                <h4>Nenjukkul Peidhidum</h4>
+                <p>Harris Jayaraj</p>
+            </div>
+            <small>5:12</small>
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+<script>
+    
+const followBtns = document.querySelectorAll(".follow");
+
+followBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        btn.classList.toggle("active");
+
+        if(btn.classList.contains("active")){
+            btn.innerHTML = "Following";
+        }else{
+            btn.innerHTML = "Follow";
+        }
+
+    });
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TuneWave | Playlist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#0F0F1A;
+            color:white;
+            overflow-x:hidden;
+        }
+
+        /* Sidebar */
+
+        .sidebar{
+            position:fixed;
+            top:0;
+            left:0;
+            width:240px;
+            height:100vh;
+            background:rgba(255,255,255,.08);
+            backdrop-filter:blur(18px);
+            border-right:1px solid rgba(255,255,255,.1);
+            padding:30px 20px;
+        }
+
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:12px;
+            color:#A855F7;
+            font-size:22px;
+            font-weight:bold;
+            margin-bottom:35px;
+        }
+
+        .logo img{
+            width:55px;
+            height:55px;
+            border-radius:50%;
+            object-fit:cover;
+        }
+
+        .sidebar a{
+            display:block;
+            color:white;
+            text-decoration:none;
+            padding:14px 16px;
+            margin-bottom:10px;
+            border-radius:12px;
+            transition:.3s;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active{
+            background:rgba(168,85,247,.25);
+            color:#C084FC;
+        }
+
+        /* Main */
+
+        .main{
+            margin-left:240px;
+            width:calc(100% - 240px);
+            min-height:100vh;
+            padding:40px;
+        }
+
+        .main{
+    margin-left:240px;
+    padding:40px;
+}
+
+.spotify-playlist{
+    display:flex;
+    align-items:flex-end;
+    gap:35px;
+    padding:45px;
+    border-radius:26px;
+    background:linear-gradient(180deg,#5B21B6 0%, #1A1A2E 100%);
+}
+
+.cover{
+    width:230px;
+    height:230px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#7C3AED,#DB2777);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:95px;
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+.type{
+    color:#E9D5FF;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.hero-info h1{
+    font-size:72px;
+    line-height:1;
+    margin-bottom:16px;
+}
+
+.desc{
+    color:#D1D5DB;
+    margin-bottom:18px;
+}
+
+.meta{
+    display:flex;
+    gap:10px;
+    color:#E5E7EB;
+    margin-bottom:28px;
+    flex-wrap:wrap;
+}
+
+.hero-btns{
+    display:flex;
+    gap:16px;
+}
+
+.play{
+    background:#1DB954;
+    color:white;
+    border:none;
+    padding:14px 32px;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.save{
+    background:transparent;
+    color:white;
+    border:1px solid rgba(255,255,255,.3);
+    padding:14px 28px;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+}
+.meta-1:before{
+    content:"\1F3A7";
+}
+.meta-2:before{
+    content:"\2022";
+}
+.play:before{
+    content:"\25B6";
+}
+.save:before{
+    content:"\2661";
+}
+/* ---------- SONG SECTION ---------- */
+
+.songs-section{
+    width:92%;
+    margin:20px auto 40px;   /* 0 → 20px */
+    background:#07090F;
+    border-radius:22px;
+    padding:25px 18px;
+}
+
+.song-header{
+    display:grid;
+    grid-template-columns:50px 1fr 120px;
+    color:#8B93A7;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    padding:0 10px 15px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.song-row{
+    display:grid;
+    grid-template-columns:50px 1fr 120px;
+    align-items:center;
+    padding:16px 10px;
+    border-radius:12px;
+    transition:0.3s;
+    cursor:pointer;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.song-row:hover{
+    background:rgba(255,255,255,0.05);
+}
+
+.song-row.active{
+    background:linear-gradient(90deg,#0B3D24,#06361D);
+}
+
+.number{
+    color:#A1A1AA;
+    font-size:18px;
+    text-align:center;
+}
+
+.song-row.active .number{
+    color:#22C55E;
+}
+
+.song-info h4{
+    color:#fff;
+    font-size:18px;
+    margin-bottom:6px;
+}
+
+.song-info p{
+    color:#9CA3AF;
+    font-size:15px;
+}
+
+.song-time{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:16px;
+    color:#E5E7EB;
+}
+
+.heart{
+    color:#9CA3AF;
+    font-size:20px;
+    transition:0.3s;
+}
+
+.heart:hover{
+    color:#22C55E;
+}
+.playlist-meta{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#E5E7EB;
+    font-size:18px;
+    margin:12px 0 22px;
+}
+
+.playlist-meta span{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+.bottom-player{
+    position:fixed;
+    bottom:0;
+    left:240px;
+    width:calc(100% - 240px);
+    height:90px;
+
+    background:rgba(18,18,18,.96);
+    backdrop-filter:blur(20px);
+    border-top:1px solid rgba(255,255,255,.08);
+
+    display:grid;
+    grid-template-columns:220px 1fr 80px;
+    align-items:center;
+
+    padding:0 25px;
+    z-index:999;
+}
+
+.player-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.player-center{
+    width:100%;
+    max-width:520px;
+    justify-self:center;
+}
+
+.player-right{
+    justify-self:end;
+    font-size:20px;
+}
+
+.controls{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:22px;
+    margin-bottom:10px;
+}
+
+.progress{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.bar{
+    flex:1;
+    height:4px;
+    background:#3F3F46;
+    border-radius:10px;
+}
+
+.fill{
+    width:35%;
+    height:100%;
+    background:#22C55E;
+    border-radius:10px;
+}
+.player-cover{
+    width:58px;
+    height:58px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#9333EA,#EC4899);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+}
+
+.song-details h4{
+    font-size:16px;
+    margin-bottom:4px;
+}
+
+.song-details p{
+    color:#9CA3AF;
+    font-size:13px;
+}
+
+.play-btn{
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:#22C55E;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.3s;
+}
+
+.play-btn:hover{
+    transform:scale(1.08);
+}
+
+.play-btn::before{
+    content:"\25B6";     /* ▶ Play */
+    color:white;
+    font-size:22px;
+}
+
+.play-btn.playing::before{
+    content:"\23F8";     /* ⏸ Pause */
+}
+
+/* Mobile Responsive */
+
+@media(max-width:768px){
+
+.sidebar{
+    width:100%;
+    height:70px;
+    top:auto;
+    bottom:90px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding:0 10px;
+    border-right:none;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    display:none;
+}
+
+.sidebar a{
+    margin:0;
+    padding:8px;
+    font-size:13px;
+}
+
+.main{
+    margin-left:0;
+    width:100%;
+    padding:20px;
+}
+
+.spotify-playlist{
+    flex-direction:column;
+    text-align:center;
+    align-items:center;
+}
+
+.hero-info h1{
+    font-size:42px;
+}
+
+.cover{
+    width:170px;
+    height:170px;
+    font-size:70px;
+}
+
+.song-header{
+    display:none;
+}
+
+.song-row{
+    grid-template-columns:35px 1fr 60px;
+}
+
+.song-info h4{
+    font-size:15px;
+}
+
+.song-info p{
+    font-size:12px;
+}
+
+.heart{
+    display:none;
+}
+
+.bottom-player{
+    left:0;
+    width:100%;
+    grid-template-columns:1fr;
+    height:95px;
+    padding:10px 15px;
+}
+
+.player-left{
+    justify-content:center;
+}
+
+.player-right{
+    display:none;
+}
+
+.player-center{
+    max-width:100%;
+}
+
+}
+.heart.active{
+    color:#EF4444;
+}
+.queue-section{
+    margin:30px 0 120px;
+}
+
+.queue-section h2{
+    margin-bottom:18px;
+    font-size:28px;
+}
+
+.queue-song{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#161B2E;
+    padding:15px 18px;
+    border-radius:14px;
+    margin-bottom:12px;
+}
+
+.queue-song span{
+    width:30px;
+    color:#A855F7;
+    font-weight:bold;
+}
+
+.queue-song p{
+    color:#9CA3AF;
+    font-size:14px;
+}
+
+.queue-song small{
+    color:#D1D5DB;
+}
+.icon-btn{
+    font-size:22px;
+    cursor:pointer;
+    color:#9CA3AF;
+    transition:.3s;
+}
+
+.icon-btn:hover{
+    color:#A855F7;
+}
+
+.icon-btn.active{
+    color:#22C55E;
+}
+    </style>
+</head>
+
+<body>
+
+    <nav class="sidebar">
+
+        <div class="logo">
+            <img src="musiclogo.jpg" alt="logo">
+            <span>TuneWave</span>
+        </div>
+
+        <a href="home.html">Home</a>
+        <a href="explore.html">Explore</a>
+        <a href="playlists.html" class="active">Playlist</a>
+        <a href="favorites.html">Favorites</a>
+        <a href="artists.html">Artists</a>
+        
+
+    </nav>
+
+    <div class="main">
+
+    <section class="spotify-playlist">
+
+        <div class="cover">&#127925;</div>
+
+        <div class="hero-info">
+            <p class="type">Public Playlist</p>
+
+            <h1>Tamil Vibes</h1>
+
+            <p class="desc">
+                The best Tamil hits for every mood.
+            </p>
+
+            <div class="meta">
+                <span class="meta-1"> TuneWave</span>
+                <span class="meta-2"></span>
+                <span>25 Songs</span>
+                <span class="meta-2"></span>
+                <span>1h 42min</span>
+            </div>
+
+            <div class="hero-btns">
+                <button class="play" id="heroPlay">Play</button>
+                <button class="save"> Save</button>
+            </div>
+
+        </div>
+
+    </section>
+   <section class="songs-section">
+
+<div class="song-header">
+    <span>#</span>
+    <span>Title</span>
+    <span>Time</span>
+</div>
+
+
+<div class="song-row"
+     data-title="Nenjukkul Peidhidum"
+     data-artist="Harris Jayaraj"
+     data-time="5:12"
+     data-audio="audio/nenjukkul.mp3">
+
+    <div class="number">1</div>
+
+    <div class="song-info">
+        <h4>Nenjukkul Peidhidum</h4>
+        <p>Harris Jayaraj</p>
+    </div>
+
+    <div class="song-time">
+        <span class="heart">&#9825;</span>
+        <span>5:12</span>
+    </div>
+</div>
+
+
+
+<div class="song-row"
+     data-title="Vaseegara"
+     data-artist="Harris Jayaraj"
+     data-time="4.59"
+     data-audio="audio/vaseegara.mp3">
+
+    <div class="number">2</div>
+
+    <div class="song-info">
+        <h4>Vaseegara</h4>
+        <p>Harris Jayaraj</p>
+    </div>
+
+    <div class="song-time">
+        <span class="heart">&#9825;</span>
+        <span>4.59</span>
+    </div>
+</div>
+
+<div class="song-row"
+     data-title="Munbe Vaa"
+     data-artist="AR Rahman"
+     data-time="5.31"
+     data-audio="audio/munbevaa.mp3">
+
+    <div class="number">3</div>
+
+    <div class="song-info">
+        <h4>Munbe vaa</h4>
+        <p>A.R.Rahman</p>
+    </div>
+
+    <div class="song-time">
+        <span class="heart">&#9825;</span>
+        <span>5.31</span>
+    </div>
+</div>
+
+
+<div class="song-row"
+     data-title="Oru Malai"
+     data-artist="Karthik"
+     data-time="5.55"
+     data-audio="audio/Oru-Maalai.mp3">
+
+    <div class="number">4</div>
+
+    <div class="song-info">
+        <h4>Oru Malai</h4>
+        <p>karthik</p>
+    </div>
+
+    <div class="song-time">
+        <span class="heart">&#9825;</span>
+        <span>5.55</span>
+    </div>
+</div>
+
+<div class="song-row"
+     data-title="Why This Kolaveri"
+     data-artist="Aniruth Ravichandran"
+     data-time="5.55"
+     data-audio="audio/why this kolaveri.mp3">
+
+    <div class="number">5</div>
+
+    <div class="song-info">
+        <h4>Why This Kolaveri</h4>
+        <p>Aniruth Ravichandran</p>
+    </div>
+
+    <div class="song-time">
+        <span class="heart">&#9825;</span>
+        <span>4.18</span>
+    </div>
+</div>
+
+<div class="song-row"
+     data-title="kannazhaga"
+     data-artist="Dhanush & shurtihasan"
+     data-time="3.52"
+     data-audio="audio/kannalaga.mp3">
+
+    <div class="number">6</div>
+
+    <div class="song-info">
+        <h4>kannazhaga</h4>
+        <p>Dhanush & shurtihasan</p>
+    </div>
+
+    <div class="song-time">
+        <span class="heart">&#9825;</span>
+        <span>3.52</span>
+    </div>
+</div>
+
+<div class="song-row"
+     data-title="Thalli Pogathey"
+     data-artist="Sid Sriram"
+     data-time="3.52"
+     data-audio="audio/Thalli-Pogathey.mp3">
+
+    <div class="number">7</div>
+
+    <div class="song-info">
+        <h4>Thalli Pogathey</h4>
+        <p>Sid Sriram</p>
+    </div>
+
+    <div class="song-time">
+        <span class="heart">&#9825;</span>
+        <span>4.27</span>
+    </div>
+</div>
+
+<div class="song-row"
+     data-title="Kadhale Kadhale"
+     data-artist="Govind Vasantha"
+     data-time="3.52"
+     data-audio="audio/Kadhale Kadhale.mp3">
+
+    <div class="number">8</div>
+
+    <div class="song-info">
+        <h4>Kadhale Kadhale</h4>
+        <p>Govind Vasantha</p>
+    </div>
+
+    <div class="song-time">
+        <span class="heart">&#9825;</span>
+        <span>3.44</span>
+    </div>
+</div>
+
+<div class="song-row"
+     data-title="Megham Karukatha"
+     data-artist="Dhanush"
+     data-time="4.08"
+     data-audio="audio/megam-karukatha.mp3">
+
+    <div class="number">9</div>
+
+    <div class="song-info">
+        <h4>Megham Karukatha</h4>
+        <p>Dhanush</p>
+    </div>
+
+    <div class="song-time">
+        <span class="heart">&#9825;</span>
+        <span>4.08</span>
+    </div>
+</div>
+
+
+
+
+
+</section>
+<section class="queue-section">
+
+  <h2>Up Next</h2>
+
+  <div class="queue-list">
+
+    <div class="queue-song">
+      <span>▶</span>
+      <div>
+        <h4>Vaseegara</h4>
+        <p>Harris Jayaraj</p>
+      </div>
+      <small>4:59</small>
+    </div>
+
+    <div class="queue-song">
+      <span>3</span>
+      <div>
+        <h4>Munbe Vaa</h4>
+        <p>A.R. Rahman</p>
+      </div>
+      <small>5:31</small>
+    </div>
+
+    <div class="queue-song">
+      <span>4</span>
+      <div>
+        <h4>Oru Maalai</h4>
+        <p>Karthik</p>
+      </div>
+      <small>5:55</small>
+    </div>
+
+  </div>
+
+</section>
+<div class="bottom-player">
+
+    <div class="player-left">
+        <div class="player-cover">&#127925;</div>
+
+        <div class="song-details">
+            <h4 id="playerTitle">Nenjukkul Peidhidum</h4>
+            <p id="playerArtist">Harris Jayaraj</p>
+        </div>
+    </div>
+
+    <div class="player-center">
+
+      <div class="controls">
+
+    <span id="shuffleBtn" class="icon-btn">&#128256;</span>
+
+    <span id="prevBtn">&#9198;</span>
+
+    <button class="play-btn" id="playBtn"></button>
+
+    <span id="nextBtn">&#9197;</span>
+
+    <span id="repeatBtn" class="icon-btn">&#128257;</span>
+
+</div>
+        <div class="progress">
+            <span id="currentTime">0:00</span>
+
+            <div class="bar">
+                <div class="fill" id="fill"></div>
+            </div>
+
+            <span id="duration">5:12</span>
+        </div>
+
+    </div>
+
+    <div class="player-right">&#128266;</div>
+</div>
+<audio id="audioPlayer"></audio>
+
+
+<script>
+const songs = document.querySelectorAll(".song-row");
+const audio = document.getElementById("audioPlayer");
+
+const playerTitle = document.getElementById("playerTitle");
+const playerArtist = document.getElementById("playerArtist");
+const duration = document.getElementById("duration");
+const currentTime = document.getElementById("currentTime");
+
+const playBtn = document.getElementById("playBtn");
+const heroPlay = document.getElementById("heroPlay");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
+const fill = document.getElementById("fill");
+
+let currentSong = 0;
+let playing = false;
+
+function format(sec){
+    const m = Math.floor(sec/60);
+    const s = Math.floor(sec%60);
+    return m + ":" + String(s).padStart(2,"0");
+}
+
+function loadSong(index){
+    songs.forEach((song,i)=>{
+        song.classList.remove("active");
+        song.querySelector(".number").textContent = i+1;
+    });
+
+    songs[index].classList.add("active");
+    songs[index].querySelector(".number").textContent = "▶";
+
+    playerTitle.textContent = songs[index].dataset.title;
+    playerArtist.textContent = songs[index].dataset.artist;
+    duration.textContent = songs[index].dataset.time;
+
+    audio.src = songs[index].dataset.audio;
+    currentSong = index;
+}
+
+function playSong(){
+    audio.play();
+    playing = true;
+    playBtn.classList.add("playing");
+}
+
+function pauseSong(){
+    audio.pause();
+    playing = false;
+    playBtn.classList.remove("playing");
+}
+playBtn.onclick = () => {
+    if (playing){
+        pauseSong();
+    } else {
+        playSong();
+    }
+};
+
+heroPlay.onclick = () => {
+    if (playing){
+        pauseSong();
+    } else {
+        playSong();
+    }
+};
+
+playBtn.onclick = ()=> playing ? pauseSong() : playSong();
+heroPlay.onclick = ()=> playing ? pauseSong() : playSong();
+
+nextBtn.onclick = ()=>{
+    currentSong = (currentSong+1)%songs.length;
+    loadSong(currentSong);
+    playSong();
+};
+
+prevBtn.onclick = ()=>{
+    currentSong = (currentSong-1+songs.length)%songs.length;
+    loadSong(currentSong);
+    playSong();
+};
+
+songs.forEach((song,index)=>{
+    song.onclick = ()=>{
+        loadSong(index);
+        playSong();
+    };
+});
+
+audio.addEventListener("timeupdate",()=>{
+    if(audio.duration){
+        fill.style.width = (audio.currentTime/audio.duration)*100 + "%";
+        currentTime.textContent = format(audio.currentTime);
+        duration.textContent = format(audio.duration);
+    }
+});
+
+audio.addEventListener("ended",()=>{
+    nextBtn.click();
+});
+
+loadSong(0);
+audio.addEventListener("ended",()=>{
+    nextBtn.click();
+});
+
+// 👇 INGA LIKE CODE PASTE PANNU
+
+let likedSongs = JSON.parse(localStorage.getItem("likedSongs")) || [];
+
+const hearts = document.querySelectorAll(".heart");
+
+hearts.forEach((heart,index)=>{
+
+    const song = songs[index];
+    const id = song.dataset.title;
+
+    if(likedSongs.some(item => item.id === id)){
+        heart.innerHTML = "♥";
+        heart.classList.add("active");
+    }
+
+    heart.addEventListener("click",(e)=>{
+        e.stopPropagation();
+
+        const data = {
+            id:song.dataset.title,
+            title:song.dataset.title,
+            artist:song.dataset.artist,
+            time:song.dataset.time,
+            audio:song.dataset.audio
+        };
+
+        const exists = likedSongs.findIndex(item => item.id === data.id);
+
+        if(exists === -1){
+
+    likedSongs = likedSongs.filter(item => item.id !== data.id);
+
+    likedSongs.push(data);
+
+    heart.innerHTML = "♥";
+    heart.classList.add("active");
+
+}else{
+
+    likedSongs.splice(exists,1);
+
+    heart.innerHTML = "♡";
+    heart.classList.remove("active");
+}
+
+        localStorage.setItem("likedSongs", JSON.stringify(likedSongs));
+    });
+});
+
+// LAST LINE
+loadSong(0);
+let shuffle = false;
+let repeat = false;
+
+const shuffleBtn = document.getElementById("shuffleBtn");
+const repeatBtn = document.getElementById("repeatBtn");
+
+shuffleBtn.onclick = () => {
+    shuffle = !shuffle;
+    shuffleBtn.classList.toggle("active");
+};
+
+repeatBtn.onclick = () => {
+    repeat = !repeat;
+    repeatBtn.classList.toggle("active");
+};
+
+audio.addEventListener("ended", () => {
+
+    if(repeat){
+        audio.currentTime = 0;
+        playSong();
+        return;
+    }
+
+    if(shuffle){
+        currentSong = Math.floor(Math.random() * songs.length);
+    }else{
+        currentSong = (currentSong + 1) % songs.length;
+    }
+
+    loadSong(currentSong);
+    playSong();
+
+});
+</script>
+
+</body>
+</html>
