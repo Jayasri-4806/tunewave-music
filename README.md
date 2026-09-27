@@ -78,7 +78,7 @@ Showcases popular Tamil artists and featured music collections.
 
 ### 🎶 Playlists Page
 
-![Playlists](images/playlists.png)
+![Playlists](images/playlist.png)
 
 ### ❤️ Favorites Page
 
@@ -86,7 +86,7 @@ Showcases popular Tamil artists and featured music collections.
 
 ### 👨‍🎤 Artists Page
 
-![Artists](images/artists.png)
+![Artists](images/artist.png)
 
 ---
 
